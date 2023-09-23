@@ -3,9 +3,7 @@ scrapy
 scrapeops-scrapy
 scrapy-user-agents
 opnepyxl
-torch
-torchvision
-torchaudio
+torch torchvision torchaudio
 scipy
 numpy
 tensorflow
