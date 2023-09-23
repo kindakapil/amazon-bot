@@ -1,6 +1,6 @@
 import streamlit as st
-import scrapy
-from scrapy.crawler import CrawlerProcess
+# import scrapy
+# from scrapy.crawler import CrawlerProcess
 
 
 # Import your QnA and Sentiment Analysis programs
