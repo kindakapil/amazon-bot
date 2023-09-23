@@ -26,11 +26,10 @@ class Prodcrawler3Spider(scrapy.Spider):
         'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
         'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
         'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
-        'CONCURRENT_REQUESTS': 1
     },
-    # 'CONCURRENT_REQUESTS': 1,
-    # 'AUTOTHROTTLE_ENABLED': True,
-    # 'AUTOTHROTTLE_START_DELAY': 5,
+    'CONCURRENT_REQUESTS': 1,
+    'AUTOTHROTTLE_ENABLED': True,
+    'AUTOTHROTTLE_START_DELAY': 5,
     }
 
     def parse(self, response):
