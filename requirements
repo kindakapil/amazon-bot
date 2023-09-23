@@ -1,0 +1,9 @@
+streamlit
+scrapy==2.11.0
+transformers
+scrapeops-scrapy
+scrapy-user-agents
+opnepyxl
+pytorch
+pyvision
+scipy
