@@ -20,7 +20,7 @@ class Prodcrawler3Spider(scrapy.Spider):
         'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500
     },
     'ROBOTSTXT_OBEY' : False,
-    'SCRAPEOPS_API_KEY' : '2d77b787-a561-44a9-9382-287c5ffea1ea',
+    'SCRAPEOPS_API_KEY' : 'ENTER YOUR SCRAPEOPS API KEY HERE',
     'DOWNLOADER_MIDDLEWARES' : {
         'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
         'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
