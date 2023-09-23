@@ -1,8 +1,8 @@
-transformers
 scrapy
 scrapeops-scrapy
 scrapy-user-agents
 opnepyxl
+transformers
 torch torchvision torchaudio
 scipy
 numpy
