@@ -30,7 +30,7 @@ def main():
                     # You can retrieve the answer from a file or other IPC mechanisms
                     with open('bot_input', 'r') as f:
                         answer = qna(user_question)
-                    st.write(f"Answer: {answer}")  # Display the answer in Streamlit
+                    st.write(f" {answer}")  # Display the answer in Streamlit
 
     elif app_choice == "Sentiment Analysis":
         st.title("Sentiment Analysis Program")
