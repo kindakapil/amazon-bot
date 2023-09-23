@@ -1,5 +1,6 @@
 import streamlit as st
-from qna_bot import qna, run_crawler
+import subprocess
+from qna_bot import qna
 from sen_ana import sen_anaz
 
 # Define the Streamlit app
@@ -18,15 +19,17 @@ def main():
         if amazon_link:
             # Add a button to trigger web scraping with the Amazon link
             if st.button("Submit Link"):
-                run_crawler(amazon_link)  # Call the modified function to scrape Amazon
+                # Run Scrapy in a separate process
+                subprocess.Popen(["python", "scrapy_spider.py",amazon_link])
 
-            # Add a text input field for user questions
             user_question = st.text_input("Ask a Question:")
             
             if user_question:
                 # Add a button to trigger QnA with the user's question
                 if st.button("Get Answer"):
-                    answer = qna(user_question)  # Call the modified function to get answers
+                    # You can retrieve the answer from a file or other IPC mechanisms
+                    with open('bot_input', 'r') as f:
+                        answer = qna(user_question)
                     st.write(f"Answer: {answer}")  # Display the answer in Streamlit
 
     elif app_choice == "Sentiment Analysis":
@@ -38,7 +41,9 @@ def main():
         if user_review:
             # Add a button to trigger the Sentiment Analysis program
             if st.button("Analyze Sentiment"):
-                sentiment_result = sen_anaz(user_review)  # Call your Sentiment Analysis program function with the input
+                # Call your Sentiment Analysis program function with the input
+                # sentiment_result = sen_anaz(user_review)  # Replace with your actual function
+                sentiment_result = sen_anaz(user_review) # Replace with the actual result
                 st.write(f"Sentiment: {sentiment_result}")  # Display the sentiment result in Streamlit
 
 if __name__ == "__main__":
