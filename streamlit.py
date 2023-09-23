@@ -17,7 +17,7 @@ def main():
         
         if amazon_link:
             # Add a button to trigger web scraping with the Amazon link
-            if st.button("Scrape Amazon"):
+            if st.button("Submit Link"):
                 run_crawler(amazon_link)  # Call the modified function to scrape Amazon
 
             # Add a text input field for user questions
