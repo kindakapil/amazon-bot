@@ -1,13 +1,12 @@
 transformers
-streamlit
 scrapy
 scrapeops-scrapy
 scrapy-user-agents
 opnepyxl
-pytorch
-pyvision
+torch
+torchvision
+torchaudio
 scipy
-sys
 numpy
 tensorflow
 subprocess
