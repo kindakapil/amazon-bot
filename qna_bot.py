@@ -12,8 +12,9 @@ class Prodcrawler3Spider(scrapy.Spider):
     name = "prodcrawler3"
     allowed_domains = ["www.amazon.com","www.amazon.in"]
     # start_urls = [r"https://www.amazon.in/dp/B09WQYFLRX/ref=s9_acsd_al_bw_c2_x_2_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-2&pf_rd_r=V90K4GX2KV2CRK1H0TMM&pf_rd_t=101&pf_rd_p=dd55f421-4048-4cb6-98e4-c55c8eb200cb&pf_rd_i=68424881031"]
-    user_url = input("\n\nPlease paste the url of your amazon product\n\n")
-    start_urls = [fr'{user_url}']
+    # user_url = input("\n\nPlease paste the url of your amazon product\n\n")
+    # user_url = input("\n\nPlease paste the url of your amazon product\n\n")
+    # start_urls = [fr'{user_url}']
     custom_settings = {
     'EXTENSIONS': {
         'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500
@@ -84,18 +85,19 @@ class Prodcrawler3Spider(scrapy.Spider):
 
         print("DONE")
 
-process = CrawlerProcess(
-    settings={
-        "FEEDS": {
-            "items.json": {"format": "json"},
-        },
-    }
-)        
+def run_crawler(user_url):
+    process = CrawlerProcess(
+        settings={
+            "FEEDS": {
+                "items.json": {"format": "json"},
+            },
+        }
+    )
 
-process.crawl(Prodcrawler3Spider)
-process.start()
+    process.crawl(Prodcrawler3Spider, start_urls=[user_url])
+    process.start()
 
-def qna():
+def qna(user_question):
     from transformers import TFAutoModelForQuestionAnswering, AutoTokenizer, pipeline
 
     model_name = "deepset/electra-base-squad2"
@@ -106,22 +108,20 @@ def qna():
     with open('bot_input') as f:
         context = str(f.readlines())
 
-    # print(type(context))
-
     # Getting predictions
     nlp = pipeline('question-answering', model=model_name, tokenizer=model_name)
 
-    #Enter Question here:
-    ques = input('\n\nHow can I help you?:)\n')
-
     QA_input = {
-        'question': ques,
+        'question': user_question,
         'context': context
     }
 
     res = nlp(QA_input)
-    print(f"Question: {ques}")
+    print(f"Question: {user_question}")
     print(f"Answer: {res['answer']}")
+    answer = str(f"Answer: {res['answer']}")
+    return answer
+
 # res
 
-qna() 
+# qna() 
